@@ -6,7 +6,7 @@ $(NAME).pdf: $(sort $(PDF))
 	pdftk $^ cat output $@
 
 %.pdf: %.tex
-	latexmk -pdf -pdflatex='xelatex %O %S' $<
+	latexmk -pdf -pdflatex='xelatex -shell-escape %O %S' $<
 
 .PHONY: all clean cleanall
 all: $(NAME).pdf $(PDF)
