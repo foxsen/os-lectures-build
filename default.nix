@@ -7,7 +7,7 @@ let
 in (import nixpkgs {}).callPackage (
   { stdenvNoCC, fetchgit, lib, makeFontsConf
   , noto-fonts, noto-fonts-extra
-  , texlive, fontconfig, pdftk }:
+  , texlive, fontconfig, pdftk, python36Packages, which }:
 
   let noto-fonts-cjk-ttc = stdenvNoCC.mkDerivation {
     name = "noto-fonts-cjk-ttc-2.001";
@@ -37,6 +37,8 @@ in (import nixpkgs {}).callPackage (
       texlive.combined.scheme-full
       fontconfig
       pdftk
+      which
+      python36Packages.pygments
     ];
 
     FONTCONFIG_FILE = makeFontsConf {
